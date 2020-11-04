@@ -3,16 +3,17 @@
 
 #include <ros/ros.h>
 
-namespace my_lib {
-    class MyLib
-    {
-        public:
-            MyLib();
-            virtual ~MyLib();
-            void sayHello();
-    };
+// namespace my_lib {
+    // class MyLib
+    // {
+    //     public:
+    //         MyLib();
+    //         virtual ~MyLib();
+    //         void sayHello();
+    // };
 
-    // void sayHello();
-}
+    void sayHello();
+    void test();
+// };
 
 #endif
