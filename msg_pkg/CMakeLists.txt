@@ -31,3 +31,7 @@ include_directories(
 )
 
 
+
+add_executable(pub_test src/pub_test.cpp)
+target_link_libraries(pub_test ${catkin_LIBRARIES})
+add_dependencies(pub_test msg_pkg_gencpp)
