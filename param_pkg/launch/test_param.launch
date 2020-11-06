@@ -1,0 +1,11 @@
+
+<launch>
+
+    <node pkg="param_pkg" name="param_py" type="test_param.py">
+        <rosparam command="load" file="$(find param_pkg)/param/test_param.yaml"/>
+    </node>
+    <node pkg="param_pkg" name="param_cpp" type="test_param">
+        <rosparam command="load" file="$(find param_pkg)/param/test_param.yaml"/>
+    </node>
+
+</launch>

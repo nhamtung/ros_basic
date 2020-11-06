@@ -1,0 +1,10 @@
+string: 'foo'
+integer: 1234
+float: 1234.5
+boolean: true
+list: [1.0, mixed list]
+dictionary: {a: b, c: d}
+angle1: rad(2*pi)
+angle2: deg(180)
+angle3: !degrees 181.0
+angle4: !radians 3.14169
