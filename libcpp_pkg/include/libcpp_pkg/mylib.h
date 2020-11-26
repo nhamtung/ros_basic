@@ -3,17 +3,19 @@
 
 #include <ros/ros.h>
 
+using namespace std;
+
 // namespace my_lib {
-    // class MyLib
-    // {
-    //     public:
-    //         MyLib();
-    //         virtual ~MyLib();
-    //         void sayHello();
-    // };
+//     // class MyLib
+//     // {
+//     //     public:
+//     //         MyLib();
+//     //         virtual ~MyLib();
+//     //         void sayHello();
+//     // };
 
-    void sayHello();
-    void test();
+//     void sayHello();
+//     void test();
 // };
-
+void test(void);
 #endif

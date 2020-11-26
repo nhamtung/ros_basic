@@ -2,6 +2,8 @@
 #include "std_msgs/String.h"
 #include <sstream>
 
+#include "libcpp_pkg/mylib.h"
+
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "talker");
