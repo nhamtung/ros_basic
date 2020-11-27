@@ -4,26 +4,13 @@
 using std::cout;
 using namespace std;
 
-// namespace my_lib {
-//     // MyLib::MyLib(){
-//     //     ROS_INFO("MyLib");
-//     // }
-//     // MyLib::~MyLib(){
-//     //     ROS_INFO("~MyLib");
-//     // }
-//     // void MyLib::sayHello()
-//     // {
-//     //     ROS_INFO("sayHello");
-//     //     cout << "std::endl duoc su dung voi std!" << std::endl;
-//     // }
+MyLib::MyLib(std::string host){
+    ROS_INFO("MyLib");
+    host_ = host;
+}
+MyLib::~MyLib(void) = default;
 
-//     void test()
-//     {
-//         ROS_INFO("sayHello");
-//         cout << "std::endl duoc su dung voi std!" << std::endl;
-//     }
-// };
-void test(void)
+void MyLib::sayHello()
 {
     ROS_INFO("sayHello");
     cout << "std::endl duoc su dung voi std!" << std::endl;

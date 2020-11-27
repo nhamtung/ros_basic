@@ -5,17 +5,28 @@
 
 using namespace std;
 
-// namespace my_lib {
-//     // class MyLib
-//     // {
-//     //     public:
-//     //         MyLib();
-//     //         virtual ~MyLib();
-//     //         void sayHello();
-//     // };
 
-//     void sayHello();
-//     void test();
-// };
-void test(void);
+struct testStruct{
+    double a;
+    double b;
+};
+
+enum State{
+    STATE_EXECUTED,
+    STATE_CANCEL,
+    STATE_DONE
+};
+
+class MyLib
+{
+    private:
+        std::string host_;
+    public:
+        MyLib(std::string host);
+        ~MyLib();
+        std::string d;
+        void sayHello();
+};
+
+
 #endif

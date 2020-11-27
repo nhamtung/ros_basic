@@ -8,7 +8,8 @@ find_package(catkin REQUIRED COMPONENTS
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES libcpp_pkg
+  LIBRARIES ${PROJECT_NAME}
+#  LIBRARIES libcpp_pkg
   CATKIN_DEPENDS roscpp std_msgs
 )
 
@@ -23,6 +24,6 @@ target_link_libraries(mylib ${catkin_LIBRARIES})
 
 
 
-add_executable(main_lib src/main.cpp)
-target_link_libraries(main_lib ${catkin_LIBRARIES})
-add_dependencies(main_lib ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_executable(main src/main.cpp)
+target_link_libraries(main ${catkin_LIBRARIES})
+add_dependencies(main ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
