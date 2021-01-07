@@ -9,7 +9,6 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
-#  LIBRARIES libcpp_pkg
   CATKIN_DEPENDS roscpp std_msgs
 )
 
