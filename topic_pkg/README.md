@@ -1,11 +1,18 @@
 --------------------------------------------------------------------------------------
+# Run roscore
+- Directory to workspace
+- Build: $catkin_make
+- Source: $source devel/setup.bash
+- Run: $roscore
+
+--------------------------------------------------------------------------------------
 # Publish the topic
 - Directory to workspace
 - Build: $catkin_make
 - Source: $source devel/setup.bash
 - Run:
-    + Python: $rolaunch topic_pkg talker.py
-    + cpp: $roslaunch topic_pkg talker
+    + Python: $rosrun topic_pkg talker.py
+    + cpp: $rosrun topic_pkg talker
 
 --------------------------------------------------------------------------------------
 # Subscriber the topic
@@ -13,8 +20,8 @@
 - Build: $catkin_make
 - Source: $source devel/setup.bash
 - Run:
-    + Python: $rolaunch topic_pkg listener.py
-    + cpp: $roslaunch topic_pkg listener
+    + Python: $rosrun topic_pkg listener.py
+    + cpp: $rosrun topic_pkg listener
 
 --------------------------------------------------------------------------------------
 # Export data to cvs file

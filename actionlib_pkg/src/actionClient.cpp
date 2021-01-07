@@ -11,7 +11,7 @@ int main(int argc, char** argv)
   actionlib_pkg::doDishesGoal goal;
   // Fill in goal here
   client.sendGoal(goal);
-  client.waitForResult(ros::Duration(5.0));
+  client.waitForResult();
   if (client.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
     printf("Yay! The dishes are now clean");
   printf("Current State: %s\n", client.getState().toString().c_str());

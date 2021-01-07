@@ -7,7 +7,7 @@ from std_msgs.msg import String
 def callback(data):
     header_ = False
     dataSave_ = data.data
-    rospy.loginfo(" -> error: %f", dataSave_)
+    rospy.loginfo(" -> error: %s", dataSave_)
     exportCsv(0, dataSave_, header_)
 
 def exportCsv(seconds_, data_, header_):

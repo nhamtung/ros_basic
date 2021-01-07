@@ -19,20 +19,16 @@ generate_messages(
 )
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES actionlib_pkg
-   CATKIN_DEPENDS roscpp rospy std_msgs actionlib_msgs
-#  DEPENDS system_lib
+  CATKIN_DEPENDS roscpp rospy std_msgs actionlib_msgs
 )
 
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
+include_directories(include ${catkin_INCLUDE_DIRS})
 
 
 add_executable(actionServer src/actionServer.cpp)
 target_link_libraries(actionServer ${catkin_LIBRARIES})
+add_dependencies(actionServer ${actionlib_pkg_EXPORTED_TARGETS})
 
 add_executable(actionClient src/actionClient.cpp)
 target_link_libraries(actionClient ${catkin_LIBRARIES})
+add_dependencies(actionClient ${actionlib_pkg_EXPORTED_TARGETS})

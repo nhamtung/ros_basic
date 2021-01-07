@@ -20,9 +20,6 @@ include_directories(
 add_library(mylib src/mylib.cpp)
 target_link_libraries(mylib ${catkin_LIBRARIES})
 
-
-
-
 add_executable(main src/main.cpp)
 target_link_libraries(main ${catkin_LIBRARIES})
 add_dependencies(main ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
