@@ -1,11 +1,12 @@
-
+<?xml version="1.0"?>
 <launch>
+    <!-- Arguments -->
+    <arg name="robot_param" default="$(find param_pkg)/param/test_param.yaml"/>
 
-    <node pkg="param_pkg" name="param_py" type="test_param.py">
-        <rosparam command="load" file="$(find param_pkg)/param/test_param.yaml"/>
+    <rosparam command="load" file="$(arg robot_param)"/>
+    <node pkg="param_pkg" name="param_py" type="test_param.py" respawn="false" output="screen"/>
+    
+    <node pkg="param_pkg" name="param_cpp" type="test_param" respawn="false" output="screen">
+        <rosparam command="load" file="$(arg robot_param)"/>
     </node>
-    <node pkg="param_pkg" name="param_cpp" type="test_param">
-        <rosparam command="load" file="$(find param_pkg)/param/test_param.yaml"/>
-    </node>
-
 </launch>

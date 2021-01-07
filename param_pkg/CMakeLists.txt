@@ -21,3 +21,6 @@ include_directories(
 
 add_executable(test_param src/test_param.cpp)
 target_link_libraries(test_param ${catkin_LIBRARIES})
+
+add_executable(loadParam src/loadParam.cpp)
+target_link_libraries(loadParam ${catkin_LIBRARIES})

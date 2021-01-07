@@ -10,9 +10,9 @@ from std_msgs.msg import String
 def getParam():
     print("test_param.py-6- getParam()")
 
-    angle1 = rospy.get_param("/param_py/angle1")
-    print("test_param.py-11- angle1: ", angle1)
-    float_ = rospy.get_param("/param_py/float")
+    angle2 = rospy.get_param("/angle2")
+    print("test_param.py-11- angle2: ", angle2)
+    float_ = rospy.get_param("/float")
     print("test_param.py-13- float_: ", float_)
 
     # a_string = rospy.get_param("a_string")
@@ -40,8 +40,8 @@ def setParam():
     # rosparam.set_param('gains', "{'p': 1, 'i': 2, 'd': 3}")
 
 def checkParam():
-    if rospy.has_param('/param_py/angle1'):
-        rospy.delete_param('/param_py/angle1')
+    if rospy.has_param('/angle1'):
+        rospy.delete_param('/angle1')
 
 if __name__ == '__main__':
     try:

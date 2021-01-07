@@ -58,5 +58,6 @@ int main(int argc, char **argv)
   setParam();
   getParam();
 
+  ros::spin();
   return 0;
 }
