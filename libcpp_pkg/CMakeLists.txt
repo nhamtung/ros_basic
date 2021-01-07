@@ -17,8 +17,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_library(mylib src/mylib.cpp)
-target_link_libraries(mylib ${catkin_LIBRARIES})
+add_library(${PROJECT_NAME} src/mylib.cpp)
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 add_executable(main src/main.cpp)
 target_link_libraries(main ${catkin_LIBRARIES})
