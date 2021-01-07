@@ -22,6 +22,10 @@ add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
 
 
+add_executable(testLib src/testLib.cpp)
+target_link_libraries(testLib ${catkin_LIBRARIES})
+
+
 
 
 catkin_install_python(PROGRAMS scripts/talker.py scripts/listener.py

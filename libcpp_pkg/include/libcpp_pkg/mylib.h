@@ -28,5 +28,6 @@ class MyLib
         void sayHello();
 };
 
+void testLib(uint8_t state);
 
 #endif
