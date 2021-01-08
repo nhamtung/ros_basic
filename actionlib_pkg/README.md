@@ -6,19 +6,13 @@
 - Run: $roscore
 
 --------------------------------------------------------------------------------------
-# Run action Server
+# Run action doDishes
 - Directory to workspace
 - Build: $catkin_make
 - Source: $source devel/setup.bash
-- Run:
-    + Python: $rosrun actionlib_pkg actionServer.py
-    + cpp: $rosrun actionlib_pkg actionServer
-
---------------------------------------------------------------------------------------
-# Run action Client
-- Directory to workspace
-- Build: $catkin_make
-- Source: $source devel/setup.bash
-- Run:
-    + Python: $rosrun actionlib_pkg actionClient.py
-    + cpp: $rosrun actionlib_pkg actionClient
+- Run action Server:
+    + Python: $rosrun actionlib_pkg doDishesActionServer.py
+    + cpp: $rosrun actionlib_pkg doDishesActionServer
+- Run action Client:
+    + Python: $rosrun actionlib_pkg doDishesActionClient.py
+    + cpp: $rosrun actionlib_pkg doDishesActionClient

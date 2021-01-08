@@ -14,11 +14,11 @@ class DoDishesServer:
 
   def execute(self, goal):
     # Do lots of awesome groundbreaking robot stuff here
-    print("execute()")
+    print("doDishesActionServer.py-17->execute()")
     self.server.set_succeeded()
 
 
 if __name__ == '__main__':
-  rospy.init_node('do_dishes_server')
+  rospy.init_node('doDishesActionServer')
   server = DoDishesServer()
   rospy.spin()

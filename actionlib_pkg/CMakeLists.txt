@@ -25,10 +25,10 @@ catkin_package(
 include_directories(include ${catkin_INCLUDE_DIRS})
 
 
-add_executable(actionServer src/actionServer.cpp)
-target_link_libraries(actionServer ${catkin_LIBRARIES})
-add_dependencies(actionServer ${actionlib_pkg_EXPORTED_TARGETS})
+add_executable(doDishesActionServer src/doDishesActionServer.cpp)
+target_link_libraries(doDishesActionServer ${catkin_LIBRARIES})
+add_dependencies(doDishesActionServer ${actionlib_pkg_EXPORTED_TARGETS})
 
-add_executable(actionClient src/actionClient.cpp)
-target_link_libraries(actionClient ${catkin_LIBRARIES})
-add_dependencies(actionClient ${actionlib_pkg_EXPORTED_TARGETS})
+add_executable(doDishesActionClient src/doDishesActionClient.cpp)
+target_link_libraries(doDishesActionClient ${catkin_LIBRARIES})
+add_dependencies(doDishesActionClient ${actionlib_pkg_EXPORTED_TARGETS})
