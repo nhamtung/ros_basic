@@ -28,3 +28,12 @@
 - Run action Client: 
     + python: $rosrun actionlib_pkg fibonacciActionClient.py
     + cpp: $rosrun actionlib_pkg fibonacciActionClient
+
+--------------------------------------------------------------------------------------
+# Run action averaging with other nodes
+- Directory to workspace
+- Build: $catkin_make
+- Source: $source devel/setup.bash
+- Run data node: $rosrun actionlib_pkg gen_numbers.py
+- Run action Server: $rosrun actionlib_pkg averagingActionServer
+- Run action Client: $rosrun actionlib_pkg averagingActionClient
