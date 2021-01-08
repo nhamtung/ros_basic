@@ -48,3 +48,11 @@ add_dependencies(averagingActionServer ${actionlib_pkg_EXPORTED_TARGETS})
 add_executable(averagingActionClient src/averagingActionClient.cpp)
 target_link_libraries(averagingActionClient ${catkin_LIBRARIES})
 add_dependencies(averagingActionClient ${actionlib_pkg_EXPORTED_TARGETS})
+
+
+add_executable(fibonacciCallbackClient src/fibonacciCallbackClient.cpp)
+target_link_libraries(fibonacciCallbackClient ${catkin_LIBRARIES})
+add_dependencies(fibonacciCallbackClient ${actionlib_pkg_EXPORTED_TARGETS})
+add_executable(fibonacciClassClient src/fibonacciClassClient.cpp)
+target_link_libraries(fibonacciClassClient ${catkin_LIBRARIES})
+add_dependencies(fibonacciClassClient ${actionlib_pkg_EXPORTED_TARGETS})

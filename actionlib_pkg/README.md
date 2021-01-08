@@ -37,3 +37,13 @@
 - Run data node: $rosrun actionlib_pkg gen_numbers.py
 - Run action Server: $rosrun actionlib_pkg averagingActionServer
 - Run action Client: $rosrun actionlib_pkg averagingActionClient
+
+--------------------------------------------------------------------------------------
+# Writing a Callback Based SimpleActionClient
+- Directory to workspace
+- Build: $catkin_make
+- Source: $source devel/setup.bash
+- Run action Server: $rosrun actionlib_pkg fibonacciActionServer
+- Run action Client: 
+    + Callback: $rosrun actionlib_pkg fibonacciCallbackClient
+    + Class: $rosrun actionlib_pkg fibonacciClassClient
