@@ -30,7 +30,7 @@
     + cpp: $rosrun actionlib_pkg fibonacciActionClient
 
 --------------------------------------------------------------------------------------
-# Run action averaging with other nodes
+# Run action averaging with other nodes (multithread)
 - Directory to workspace
 - Build: $catkin_make
 - Source: $source devel/setup.bash

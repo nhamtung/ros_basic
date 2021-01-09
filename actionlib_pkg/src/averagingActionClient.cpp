@@ -6,22 +6,15 @@
 
 // http://wiki.ros.org/actionlib_tutorials/Tutorials/SimpleActionClient%28Threaded%29
 
-void spinThread(){
-  ros::spin();
-}
 
-int main (int argc, char **argv)
-{
-  ros::init(argc, argv, "averagingActionClient");
-
+void actionThread(){
   // create the action client
   actionlib::SimpleActionClient<actionlib_pkg::averagingAction> ac("averaging");
-  boost::thread spin_thread(&spinThread);
 
-  ROS_INFO("averagingActionClient.cpp -> Waiting for action server to start.");
+  ROS_INFO("averagingActionClient.cpp-actionThread() -> Waiting for action server to start.");
   ac.waitForServer();
 
-  ROS_INFO("averagingActionClient.cpp -> Action server started, sending goal.");
+  ROS_INFO("averagingActionClient.cpp-actionThread() -> Action server started, sending goal.");
   // send a goal to the action
   actionlib_pkg::averagingGoal goal;
   goal.samples = 100;
@@ -29,16 +22,36 @@ int main (int argc, char **argv)
 
   //wait for the action to return
   bool finished_before_timeout = ac.waitForResult(ros::Duration(30.0));
+  ROS_INFO("averagingActionClient.cpp-actionThread() -> wait for the action to return");
 
   if (finished_before_timeout){
     actionlib::SimpleClientGoalState state = ac.getState();
-    ROS_INFO("averagingActionClient.cpp -> Action finished: %s",state.toString().c_str());
+    ROS_INFO("averagingActionClient.cpp-actionThread() -> Action finished: %s",state.toString().c_str());
   }else
-    ROS_INFO("averagingActionClient.cpp -> Action did not finish before the time out.");
+    ROS_INFO("averagingActionClient.cpp-actionThread() -> Action did not finish before the time out.");
+}
 
-  // shutdown the node and join the thread back before exiting
-  ros::shutdown();
-  spin_thread.join();
+void mainThread(){
+  ros::Rate loop_rate(1);
+  uint8_t num_ = 0;
+  while (ros::ok())
+  {
+    ROS_INFO("averagingActionClient.cpp-mainThread() -> num : %d", num_);
+    num_ = num_ + 1;
+    ros::spinOnce();
+    loop_rate.sleep();
+  }
+}
+
+int main (int argc, char **argv)
+{
+  ros::init(argc, argv, "averagingActionClient");
+  ros::NodeHandle n;
+
+  boost::thread action_thread(&actionThread);
+  boost::thread main_thread(&mainThread);
+  action_thread.join();  //join the thread
+  main_thread.join();  //join the thread 
 
   return 0;  //exit
 }
