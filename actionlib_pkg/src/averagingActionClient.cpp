@@ -6,6 +6,7 @@
 
 // http://wiki.ros.org/actionlib_tutorials/Tutorials/SimpleActionClient%28Threaded%29
 
+int TIME_OUT = 10;
 
 void actionThread(){
   // create the action client
@@ -21,7 +22,7 @@ void actionThread(){
   ac.sendGoal(goal);
 
   //wait for the action to return
-  bool finished_before_timeout = ac.waitForResult(ros::Duration(30.0));
+  bool finished_before_timeout = ac.waitForResult(ros::Duration(TIME_OUT));
   ROS_INFO("averagingActionClient.cpp-actionThread() -> wait for the action to return");
 
   if (finished_before_timeout){
@@ -31,13 +32,17 @@ void actionThread(){
     ROS_INFO("averagingActionClient.cpp-actionThread() -> Action did not finish before the time out.");
 }
 
-void mainThread(){
+void mainThread(uint8_t total){
   ros::Rate loop_rate(1);
   uint8_t num_ = 0;
   while (ros::ok())
   {
     ROS_INFO("averagingActionClient.cpp-mainThread() -> num : %d", num_);
     num_ = num_ + 1;
+    if(num_ > total){
+      ROS_INFO("averagingActionClient.cpp-mainThread() -> Finished");
+      break;
+    }
     ros::spinOnce();
     loop_rate.sleep();
   }
@@ -49,7 +54,7 @@ int main (int argc, char **argv)
   ros::NodeHandle n;
 
   boost::thread action_thread(&actionThread);
-  boost::thread main_thread(&mainThread);
+  boost::thread main_thread(&mainThread, TIME_OUT);
   action_thread.join();  //join the thread
   main_thread.join();  //join the thread 
 
