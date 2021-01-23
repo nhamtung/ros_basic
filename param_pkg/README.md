@@ -18,3 +18,5 @@
 - Source: $source devel/setup.bash
 - Run: $roslaunch param_pkg param_runtime.launch
 - Open new sheet and run: $rosrun rqt_reconfigure rqt_reconfigure
+
+- Update parameter: #rosrun param_pkg update_dynparam

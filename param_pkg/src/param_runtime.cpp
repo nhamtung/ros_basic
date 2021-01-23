@@ -1,9 +1,9 @@
 #include <ros/ros.h>
-
 #include <dynamic_reconfigure/server.h>
 #include <param_pkg/robotConfig.h>
 
 // Reference: https://answers.ros.org/question/270034/run-rosparam-load-in-runtime/
+
 
 void callback(param_pkg::robotConfig &config, uint32_t level) {
     ROS_INFO("bool_param: %d", config.bool_param);
@@ -23,7 +23,6 @@ int main(int argc, char **argv) {
 
     dynamic_reconfigure::Server<param_pkg::robotConfig> server;
     dynamic_reconfigure::Server<param_pkg::robotConfig>::CallbackType f;
-
     f = boost::bind(&callback, _1, _2);
     server.setCallback(f);
 

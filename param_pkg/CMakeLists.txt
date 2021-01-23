@@ -9,7 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 generate_dynamic_reconfigure_options(
-  cfg/param_runtime.cfg
+  cfg/param_runtime_default.cfg
 )
 
 catkin_package(
@@ -33,3 +33,7 @@ target_link_libraries(loadParam ${catkin_LIBRARIES})
 add_executable(param_runtime src/param_runtime.cpp)
 add_dependencies(param_runtime ${PROJECT_NAME}_gencfg)
 target_link_libraries(param_runtime ${catkin_LIBRARIES})
+
+add_executable(update_dynparam src/update_dynparam.cpp)
+add_dependencies(update_dynparam ${PROJECT_NAME}_gencfg)
+target_link_libraries(update_dynparam ${catkin_LIBRARIES})
