@@ -54,9 +54,8 @@ class FibonacciAction
 
         if(success){
             result_.sequence = feedback_.sequence;
+            as_.setSucceeded(result_);  // set the action state to succeeded
             ROS_INFO("fibonacciActionServer.cpp -> %s: Succeeded", action_name_.c_str());
-            // set the action state to succeeded
-            as_.setSucceeded(result_);
         }
     }
 };
