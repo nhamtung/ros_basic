@@ -12,7 +12,7 @@ void callback(param_pkg::robotConfig &config, uint32_t level) {
     ROS_INFO("L: %f", config.L);
     ROS_INFO("R: %f", config.R);
     ROS_INFO("K: %d", config.K);
-    ROS_INFO("SpeedMotorMax: %lf", config.SpeedMotorMax);
+    ROS_INFO("SpeedMotorMax: %.0lf", config.SpeedMotorMax);
     ROS_INFO("SpeedMotorMin: %d", config.SpeedMotorMin);
     ROS_INFO("thesholdQualityPose: %d", config.thesholdQualityPose);
 }

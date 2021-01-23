@@ -5,7 +5,6 @@
 #include <param_pkg/robotConfig.h>
 #include "dynamic_reconfigure/client.h"
 
-#include <dynamic_reconfigure/DoubleParameter.h>
 #include "dynamic_reconfigure/Config.h"
 #include "dynamic_reconfigure/BoolParameter.h"
 #include "dynamic_reconfigure/IntParameter.h"
@@ -13,17 +12,7 @@
 #include "dynamic_reconfigure/DoubleParameter.h"
 #include "dynamic_reconfigure/GroupState.h"
 
-void callback(param_pkg::robotConfig &config) {
-    ROS_INFO("bool_param: %d", config.bool_param);
-    ROS_INFO("str_param: %s", config.str_param.c_str());
-
-    ROS_INFO("L: %f", config.L);
-    ROS_INFO("R: %f", config.R);
-    ROS_INFO("K: %d", config.K);
-    ROS_INFO("SpeedMotorMax: %lf", config.SpeedMotorMax);
-    ROS_INFO("SpeedMotorMin: %d", config.SpeedMotorMin);
-    ROS_INFO("thesholdQualityPose: %d", config.thesholdQualityPose);
-}
+// Reference link: https://answers.ros.org/question/12276/is-there-a-c-api-for-a-dynamic-reconfigure-client/
 
 int main(int argc, char **argv)
 {
@@ -52,7 +41,7 @@ int main(int argc, char **argv)
     intParam_.value = 50;
     dynparam_.ints.push_back(intParam_);
     intParam_.name = "thesholdQualityPose";
-    intParam_.value = 60;
+    intParam_.value = 80;
     dynparam_.ints.push_back(intParam_);
 
     stringParam_.name = "str_param";
