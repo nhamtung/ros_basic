@@ -1,6 +1,6 @@
-L: 0.500                      # Distance between two wheels
-R: 0.0825                     # wheel radius (in meters per radian)
+L: 0.500                      # Distance (m) between two wheels
+R: 0.0825                     # Wheel radius (m)
 K: 30                         # He so banh rang dong co
 SpeedMotorMax: 3000           # Speed maximum of moter before gear
-SpeedMotorMin: 50             # Speed maximum of moter before gear
-thesholdQualityPose: 60       # Threshold of quality pose allow to run Navigation
+SpeedMotorMin: 50             # Speed minimum of moter before gear
+thesholdQualityPose: 60       # Threshold (%) of quality pose allow to run Navigation

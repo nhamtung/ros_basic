@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Arguments -->
+    <node pkg="param_pkg" name="param_runtime" type="param_runtime" respawn="false" output="screen"></node>
+
+</launch>
