@@ -18,7 +18,7 @@ include_directories(
 )
 
 add_library(${PROJECT_NAME} src/mylib.cpp)
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GSTREAMER_LIBRARIES})
 
 add_executable(main src/main.cpp)
 target_link_libraries(main ${catkin_LIBRARIES})

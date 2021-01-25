@@ -5,6 +5,8 @@
 using std::cout;
 using namespace std;
 
+static MyLib *myLib;
+
 void func(){
   ROS_INFO("main.cpp-func()");
 }
@@ -40,9 +42,10 @@ int main(int argc, char **argv)
   }
 
   std::string host_name = "NhamTung";
-  // MyLib *mylib_ = new MyLib(host_name);
-  // mylib->sayHello();
+  myLib = new MyLib(host_name);
+  myLib->sayHello();
   
   ros::spin();
+  delete(myLib);
   return 0;
 }
