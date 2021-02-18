@@ -1,18 +1,18 @@
 !!python/object/new:dynamic_reconfigure.encoding.Config
 dictitems:
-  K: 20
+  K: 39
   L: 1.0
   R: 0.1
   SpeedMotorMax: 2000.0
-  SpeedMotorMin: 50
+  SpeedMotorMin: 1511
   bool_param: false
   groups: !!python/object/new:dynamic_reconfigure.encoding.Config
     dictitems:
-      K: 20
+      K: 39
       L: 1.0
       R: 0.1
       SpeedMotorMax: 2000.0
-      SpeedMotorMin: 50
+      SpeedMotorMin: 1511
       bool_param: false
       groups: !!python/object/new:dynamic_reconfigure.encoding.Config
         state: []
@@ -23,11 +23,11 @@ dictitems:
       parent: 0
       size: 1
       state: true
-      str_param: Update param by TungNV
+      str_param: saved param
       thesholdQualityPose: 80
       type: ''
     state: []
   size: 1
-  str_param: Update param by TungNV
+  str_param: saved param
   thesholdQualityPose: 80
 state: []

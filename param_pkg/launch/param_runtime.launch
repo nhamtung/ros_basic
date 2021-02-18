@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <launch>
     <!-- Arguments -->
+    <arg name="robot_param" default="$(find param_pkg)/param/param_runtime.yaml"/>
+
+    <!-- Load param default -->
     <node pkg="param_pkg" name="param_runtime" type="param_runtime" respawn="false" output="screen"></node>
+
+    <!-- Load param runtime -->
+    <node name="dynamic_reconfigure_load" pkg="dynamic_reconfigure" type="dynparam" args="load /param_runtime $(arg robot_param)" />
 
 </launch>
