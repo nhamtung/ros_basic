@@ -18,9 +18,11 @@
 - Source: $source devel/setup.bash
 - Run: $roslaunch param_pkg param_runtime.launch
 - Open new sheet and run: $rosrun rqt_reconfigure rqt_reconfigure
+- Publish to topic /control_dynparam:
+    + setDynparam:          0
+    + loadDynparamDefault:  1
+    + loadDynparamRuntime:  2
+    + saveDynparamRuntime:  3
 
-- Update parameter: $rosrun param_pkg update_dynparam
-
-- Directory: /param_pkg/param
-- Save parameter to .yaml file: $rosrun dynamic_reconfigure dynparam dump /param_runtime param_runtime.yaml
-- Load parameter from .yaml file: $rosrun dynamic_reconfigure dynparam load /param_runtime param_runtime.yaml
+- Save parameter  to  .yaml file: $rosrun dynamic_reconfigure dynparam dump /param_runtime ./src/ros_basic/param_pkg/param/param_runtime.yaml
+- Load parameter from .yaml file: $rosrun dynamic_reconfigure dynparam load /param_runtime ./src/ros_basic/param_pkg/param/param_runtime.yaml

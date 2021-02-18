@@ -30,10 +30,11 @@ target_link_libraries(test_param ${catkin_LIBRARIES})
 add_executable(loadParam src/loadParam.cpp)
 target_link_libraries(loadParam ${catkin_LIBRARIES})
 
-add_executable(param_runtime src/param_runtime.cpp)
-add_dependencies(param_runtime ${PROJECT_NAME}_gencfg)
-target_link_libraries(param_runtime ${catkin_LIBRARIES})
 
-add_executable(update_dynparam src/update_dynparam.cpp)
-add_dependencies(update_dynparam ${PROJECT_NAME}_gencfg)
-target_link_libraries(update_dynparam ${catkin_LIBRARIES})
+add_executable(dynparam_server src/dynparam_server.cpp)
+add_dependencies(dynparam_server ${PROJECT_NAME}_gencfg)
+target_link_libraries(dynparam_server ${catkin_LIBRARIES})
+
+add_executable(control_dynparam src/control_dynparam.cpp)
+add_dependencies(control_dynparam ${PROJECT_NAME}_gencfg)
+target_link_libraries(control_dynparam ${catkin_LIBRARIES})

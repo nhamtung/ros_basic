@@ -24,10 +24,10 @@ dictitems:
       size: 1
       state: true
       str_param: Hello world!
-      thesholdQualityPose: 92
+      thesholdQualityPose: 60
       type: ''
     state: []
   size: 1
   str_param: Hello world!
-  thesholdQualityPose: 92
+  thesholdQualityPose: 60
 state: []
