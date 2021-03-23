@@ -17,9 +17,9 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_library(${PROJECT_NAME} src/mylib.cpp)
+add_library(${PROJECT_NAME} src/mylib.cpp src/MathLibrary.cpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 add_executable(main src/main.cpp)
-target_link_libraries(main ${catkin_LIBRARIES})
+target_link_libraries(main ${PROJECT_NAME})
 add_dependencies(main ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

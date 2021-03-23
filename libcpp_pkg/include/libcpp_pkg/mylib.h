@@ -17,16 +17,18 @@ enum State{
     STATE_DONE
 };
 
-class MyLib
-{
-    private:
-        std::string host_;
-    public:
-        MyLib(std::string host);
-        ~MyLib();
-        std::string d;
-        void sayHello();
-};
+namespace MyLib_ns{
+    class MyLib
+    {
+        private:
+            std::string host_;
+        public:
+            MyLib(std::string host);
+            ~MyLib();
+            std::string d;
+            void sayHello();
+    };
+}
 
 void testLib(uint8_t state);
 

@@ -1,9 +1,13 @@
 
 #include "ros/ros.h"
+#include <iostream>
 #include <libcpp_pkg/mylib.h>
+#include <libcpp_pkg/MathLibrary.h>
 
 using std::cout;
 using namespace std;
+
+MyLib_ns::MyLib *mylib_;
 
 void func(){
   ROS_INFO("main.cpp-func()");
@@ -16,6 +20,16 @@ namespace my_namespace {
     }
 };
 
+void math(){
+  double a = 7.4;
+  int b = 99;
+
+  std::cout << "a + b = " << MathLibrary::Arithmetic::Add(a, b) << std::endl;
+  std::cout << "a - b = " << MathLibrary::Arithmetic::Subtract(a, b) << std::endl;
+  std::cout << "a * b = " << MathLibrary::Arithmetic::Multiply(a, b) << std::endl;
+  std::cout << "a / b = " << MathLibrary::Arithmetic::Divide(a, b) << std::endl;
+}
+
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "main_lib");
@@ -23,6 +37,7 @@ int main(int argc, char **argv)
 
 
   func();
+  math();
 
   testStruct testStruct_;
 
@@ -39,9 +54,8 @@ int main(int argc, char **argv)
     break;
   }
 
-  std::string host_name = "NhamTung";
-  // MyLib *mylib_ = new MyLib(host_name);
-  // mylib->sayHello();
+  mylib_ = new MyLib_ns::MyLib("nhamtung");
+  mylib_->sayHello();
   
   ros::spin();
   return 0;
