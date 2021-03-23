@@ -1,6 +1,8 @@
-L: 0.500                      # Distance between two wheels
-R: 0.0825                     # wheel radius (in meters per radian)
-K: 30                         # He so banh rang dong co
-SpeedMotorMax: 3000           # Speed maximum of moter before gear
-SpeedMotorMin: 50             # Speed maximum of moter before gear
-thesholdQualityPose: 60       # Threshold of quality pose allow to run Navigation
+L: 0.500                      # (float - m) Distance between two wheels
+R: 0.0825                     # (float - m) Wheel radius (in meters per radian)
+K: 20                         # (int)       He so banh rang dong co
+SpeedMotorMax: 3000           # (int - rpm) Speed maximum of moter before gear
+SpeedMotorMin: 50             # (int - rpm) Speed maximum of moter before gear
+THRESHOLD_QUALITY_POSE: 60    # (int - %)   Threshold of quality pose allow to run Navigation
+CHARGER_TIME_OUT: 300         # (int - s)   Timeout for action Charging
+NOD_TIME_OUT: 3               # (int - s)   Timeout for action Nod

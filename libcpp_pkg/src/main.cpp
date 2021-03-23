@@ -53,10 +53,11 @@ int main(int argc, char **argv)
       ROS_INFO("state: STATE_DONE");
     break;
   }
-
+  
   mylib_ = new MyLib_ns::MyLib("nhamtung");
   mylib_->sayHello();
   
   ros::spin();
+  delete(mylib_);
   return 0;
 }

@@ -1,10 +1,12 @@
 #ifndef MYLIB_H
 #define MYLIB_H
+#pragma once
 
 #include <ros/ros.h>
+#include <unistd.h>
+#include <stdint.h>
 
 using namespace std;
-
 
 struct testStruct{
     double a;
@@ -30,6 +32,5 @@ namespace MyLib_ns{
     };
 }
 
-void testLib(uint8_t state);
 
 #endif

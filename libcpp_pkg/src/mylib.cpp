@@ -1,8 +1,5 @@
 #include "libcpp_pkg/mylib.h"
-#include <ros/ros.h>
 
-using std::cout;
-using namespace std;
 
 namespace MyLib_ns{
     MyLib::MyLib(std::string host){

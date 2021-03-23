@@ -1,6 +1,7 @@
 
 #include "libcpp_pkg/mylib.h"
 
+MyLib_ns::MyLib *mylib_;
 
 void testLib(uint8_t state){
   uint8_t state_ = State(state);
@@ -21,7 +22,14 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "testLib");
   ros::NodeHandle n;
+  
+  std::string host_name = "NhamTung";
+  mylib_ = new MyLib_ns::MyLib(host_name);
+  mylib_->sayHello();
 
   testLib(0);
+  
+  ros::spin();
+  delete(mylib_);
   return 0;
 }

@@ -1,0 +1,33 @@
+!!python/object/new:dynamic_reconfigure.encoding.Config
+dictitems:
+  K: 30
+  L: 0.5
+  R: 0.0825
+  SpeedMotorMax: 3000.0
+  SpeedMotorMin: 50
+  bool_param: true
+  groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+    dictitems:
+      K: 30
+      L: 0.5
+      R: 0.0825
+      SpeedMotorMax: 3000.0
+      SpeedMotorMin: 50
+      bool_param: true
+      groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      id: 0
+      name: Default
+      parameters: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      parent: 0
+      size: 1
+      state: true
+      str_param: Hello world!
+      thesholdQualityPose: 60
+      type: ''
+    state: []
+  size: 1
+  str_param: Hello world!
+  thesholdQualityPose: 60
+state: []
