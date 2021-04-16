@@ -8,6 +8,20 @@ int main(int argc, char **argv)
   
   ros::Publisher chatter_pub = n.advertise<msg_pkg::test_msg>("chatter", 1000);
   ros::Rate loop_rate(10);
+
+  msg_pkg::test_msg test_msg_;
+  test_msg_.first_name = "NhamTung";
+  ROS_INFO("first_name: %s", test_msg_.first_name.c_str());
+  ROS_INFO("ACTION_MANUAL: %i", test_msg_.ACTION_MANUAL);
+  int8_t action = 0;
+  switch(action){
+      case test_msg_.ACTION_FLOAT:
+        ROS_INFO("ACTION_FLOAT");
+      break;
+      case test_msg_.ACTION_MANUAL:
+        ROS_INFO("ACTION_MANUAL");
+      break;
+  }
   
   int count = 0;
   while (ros::ok())
