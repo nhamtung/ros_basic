@@ -21,7 +21,6 @@
     + Direct to system folder: $cd /etc/systemd/system/
     + Create service: $vim autostart.service
     + Add to dervice file:
-        # /etc/systemd/system/autostart.service
         [Unit]
         Before=network.target
         [Service]
