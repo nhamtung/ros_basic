@@ -21,14 +21,14 @@
     + Direct to system folder: $cd /etc/systemd/system/
     + Create service: $vim autostart.service
     + Add to dervice file:
-        [Unit]
-        Before=network.target
-        [Service]
-        Type=oneshot
-        ExecStart=/root/TungNV/ros_basic_ws/src/ros_basic/autostart.sh
-        RemainAfterExit=yes
-        [Install]
-        WantedBy=multi-user.target
+        + [Unit]
+        + Before=network.target
+        + [Service]
+        + Type=oneshot
+        + ExecStart=/root/TungNV/ros_basic_ws/src/ros_basic/autostart.sh
+        + RemainAfterExit=yes
+        + [Install]
+        + WantedBy=multi-user.target
     + $reboot
 - Enable service: $sudo systemctl enable autostart.service
 - Start service: $sudo systemctl start autostart.service
