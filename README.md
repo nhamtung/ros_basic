@@ -12,3 +12,28 @@
 - param_pkg: Create a simple file parameter (.yaml) used in ROS
 - srv_pkg: Create a simple service (.srv) used in ROS
 - topic_pkg: Create a simple topic used in ROS
+
+# Autostart
+- Permit bash file:
+    + Direct to bash folder: $cd /root/TungNV/ros_basic_ws/src/ros_basic/
+    + Permit bash file: $sudo chmod +x autostart.sh
+- Create service:
+    + Direct to system folder: $cd /etc/systemd/system/
+    + Create service: $vim autostart.service
+    + Add to dervice file:
+        # /etc/systemd/system/autostart.service
+        [Unit]
+        Before=network.target
+        [Service]
+        Type=oneshot
+        ExecStart=/root/TungNV/ros_basic_ws/src/ros_basic/autostart.sh
+        RemainAfterExit=yes
+        [Install]
+        WantedBy=multi-user.target
+    + $reboot
+- Enable service: $sudo systemctl enable autostart.service
+- Start service: $sudo systemctl start autostart.service
+- Stop service: $sudo systemctl stop autostart.service
+- Disable service: $sudo systemctl disable autostart.service
+- Restart service: $sudo systemctl restart autostart.service
+- Check status service: $sudo systemctl status autostart.service
