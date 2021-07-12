@@ -22,17 +22,20 @@
     + Create service: $vim autostart.service
     + Add to dervice file:
         + [Unit]
-        + Before=network.target
+        + After=network.target
+        + StartLimitIntervalSec=0
         + [Service]
-        + Type=oneshot
+        + Type=simple
+        + Restart=always
+        + RestartSec=1
         + ExecStart=/root/TungNV/ros_basic_ws/src/ros_basic/autostart.sh
         + RemainAfterExit=yes
         + [Install]
         + WantedBy=multi-user.target
-    + $reboot
 - Enable service: $sudo systemctl enable autostart.service
 - Start service: $sudo systemctl start autostart.service
 - Stop service: $sudo systemctl stop autostart.service
 - Disable service: $sudo systemctl disable autostart.service
 - Restart service: $sudo systemctl restart autostart.service
 - Check status service: $sudo systemctl status autostart.service
+- Reload daemon: $sudo systemctl daemon-reload
