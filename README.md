@@ -15,20 +15,21 @@
 
 # Autostart
 - Permit bash file:
-    + Direct to bash folder: $cd /root/TungNV/ros_basic_ws/src/ros_basic/
+    + Direct to bash folder: $cd /home/nhamtung/TungNV/ros_basic_ws/src/ros_basic/
     + Permit bash file: $sudo chmod +x autostart.sh
 - Create service:
     + Direct to system folder: $cd /etc/systemd/system/
-    + Create service: $vim autostart.service
+    + Create service: $sudo vim autostart.service
     + Add to dervice file:
         + [Unit]
         + After=network.target
         + StartLimitIntervalSec=0
         + [Service]
+        + User=nhamtung
         + Type=simple
         + Restart=always
         + RestartSec=1
-        + ExecStart=/root/TungNV/ros_basic_ws/src/ros_basic/autostart.sh
+        + ExecStart=/home/nhamtung/TungNV/ros_basic_ws/src/ros_basic/autostart.sh
         + RemainAfterExit=yes
         + [Install]
         + WantedBy=multi-user.target
