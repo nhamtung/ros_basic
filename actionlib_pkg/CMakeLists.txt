@@ -63,6 +63,7 @@ catkin_install_python(PROGRAMS
   scripts/doDishesActionServer.py
   scripts/fibonacciActionClient.py
   scripts/fibonacciActionServer.py
+  scripts/gen_numbers.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 ## Mark executables for installation
