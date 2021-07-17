@@ -101,22 +101,22 @@ void setDynparam(int32_t count_){
     }
 }
 void loadDynparamDefault(){
-    system("rosrun dynamic_reconfigure dynparam load /dynparam_server /home/nhamtung/TungNV/ros_basic_ws/install/share/param_pkg/cfg/param_default.yaml");
+    system("rosrun dynamic_reconfigure dynparam load /dynparam_server $HOME/TungNV/ros_basic_ws/install/share/param_pkg/cfg/param_default.yaml");
     ROS_INFO("control_dynparam.cpp- loadDynparamDefault");
 }
 void saveDynparamDefault(){
     if(isSaveDynparamDefault){
-        system("rosrun dynamic_reconfigure dynparam dump /dynparam_server /home/nhamtung/TungNV/ros_basic_ws/install/share/param_pkg/cfg/param_default.yaml");
+        system("rosrun dynamic_reconfigure dynparam dump /dynparam_server $HOME/TungNV/ros_basic_ws/install/share/param_pkg/cfg/param_default.yaml");
         ROS_INFO("control_dynparam.cpp- saved Dynparam Default");
         isSaveDynparamDefault = false;
     }
 }
 void loadDynparamRuntime(){
-    system("rosrun dynamic_reconfigure dynparam load /dynparam_server /home/nhamtung/TungNV/ros_basic_ws/install/share/param_pkg/cfg/param_runtime.yaml");
+    system("rosrun dynamic_reconfigure dynparam load /dynparam_server $HOME/TungNV/ros_basic_ws/install/share/param_pkg/cfg/param_runtime.yaml");
     ROS_INFO("control_dynparam.cpp- loadDynparamRuntime");
 }
 void saveDynparamRuntime(){
-    system("rosrun dynamic_reconfigure dynparam dump /dynparam_server /home/nhamtung/TungNV/ros_basic_ws/install/share/param_pkg/cfg/param_runtime.yaml");
+    system("rosrun dynamic_reconfigure dynparam dump /dynparam_server $HOME/TungNV/ros_basic_ws/install/share/param_pkg/cfg/param_runtime.yaml");
     ROS_INFO("control_dynparam.cpp- saveDynparamRuntime");
 }
 
