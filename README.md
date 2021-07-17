@@ -15,22 +15,30 @@
 
 # Autostart
 - Permit bash file:
-    + Direct to bash folder: $cd /home/nhamtung/TungNV/ros_basic_ws/
+    + Direct to folder: $cd /home/nhamtung/TungNV/ros_basic_ws/src/ros_basic/
+    + Create packgage startup: $catkin_create_pkg startup roscpp rospy
+    + Direct to startup folder: $cd /home/nhamtung/TungNV/ros_basic_ws/src/ros_basic/startup
     + Create and edit bash file: $sudo nano autostart.sh
     + Add to bash file:
         + #!/bin/bash
         + echo Add by TungNV
         + echo cd /home/nhamtung/TungNV/ros_basic_ws/
         + cd /home/nhamtung/TungNV/ros_basic_ws/
-        + echo source devel/setup.bash
-        + source devel/setup.bash
+        + echo source install/setup.bash
+        + source install/setup.bash
         + echo roslaunch topic_pkg topic_cpp.launch
         + roslaunch topic_pkg topic_cpp.launch
         + exit 0
-    + Permit bash file: $sudo chmod +x autostart.sh
+    + Add to CMakeList.txt file in startup:
+        + install(FILES autostart.sh
+        + DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+    + Build file: $catkin_make install
+    + Permit bash file: 
+        + Direct to install folder: $cd /home/nhamtung/TungNV/ros_basic_ws/install/share/startup
+        + $sudo chmod +x autostart.sh
 - Create service:
     + Direct to system folder: $cd /etc/systemd/system/
-    + Create service: $sudo vim autostart.service
+    + Create service: $sudo nano autostart.service
     + Add to dervice file:
         + [Unit]
         + After=network.target
