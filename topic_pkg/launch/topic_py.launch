@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Arguments -->
+  <node pkg="topic_pkg" type="talker.py" name="talker" respawn="false" output="screen"> </node>
+  <node pkg="topic_pkg" type="listener.py" name="listener" respawn="false" output="screen"> </node>
+
+</launch>
