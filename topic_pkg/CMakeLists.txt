@@ -8,7 +8,9 @@ find_package(catkin REQUIRED COMPONENTS
   libcpp_pkg
 )
 
-catkin_package()
+catkin_package(
+  CATKIN_DEPENDS roscpp rospy std_msgs libcpp_pkg
+)
 
 include_directories(
 # include
@@ -17,11 +19,8 @@ include_directories(
 
 add_executable(talker src/talker.cpp)
 target_link_libraries(talker ${catkin_LIBRARIES})
-
 add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
-
-
 add_executable(testLib src/testLib.cpp)
 target_link_libraries(testLib ${catkin_LIBRARIES})
 
@@ -32,7 +31,7 @@ catkin_install_python(PROGRAMS scripts/talker.py scripts/listener.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 ## Mark executables for installation
-install(TARGETS talker listener
+install(TARGETS talker listener testLib
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 ## Mark launch file for installation

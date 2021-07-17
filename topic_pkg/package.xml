@@ -59,6 +59,9 @@
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
 
+  <build_depend>libcpp_pkg</build_depend>
+  <exec_depend>libcpp_pkg</exec_depend>
+
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
