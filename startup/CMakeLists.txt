@@ -12,7 +12,5 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-install(FILES
-  autostart.sh
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
+install(FILES autostart.sh
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

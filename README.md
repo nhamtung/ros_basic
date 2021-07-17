@@ -22,8 +22,8 @@
     + Add to bash file:
         + #!/bin/bash
         + echo Add by TungNV
-        + echo cd /home/nhamtung/TungNV/ros_basic_ws/
-        + cd /home/nhamtung/TungNV/ros_basic_ws/
+        + echo cd $HOME/TungNV/ros_basic_ws/
+        + cd $HOME/TungNV/ros_basic_ws/
         + echo source install/setup.bash
         + source install/setup.bash
         + echo roslaunch topic_pkg topic_cpp.launch
@@ -34,7 +34,7 @@
         + DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
     + Build file: $catkin_make install
     + Permit bash file: 
-        + Direct to install folder: $cd /home/nhamtung/TungNV/ros_basic_ws/install/share/startup
+        + Direct to install folder: $cd $HOME/TungNV/ros_basic_ws/install/share/startup
         + $sudo chmod +x autostart.sh
 - Create service:
     + Direct to system folder: $cd /etc/systemd/system/
@@ -44,11 +44,11 @@
         + After=network.target
         + StartLimitIntervalSec=0
         + [Service]
-        + User=nhamtung
+        + User=robotics
         + Type=simple
         + Restart=always
         + RestartSec=1
-        + ExecStart=/home/nhamtung/TungNV/ros_basic_ws/install/share/startup/autostart.sh
+        + ExecStart=/home/robotics/TungNV/ros_basic_ws/install/share/startup/autostart.sh
         + RemainAfterExit=no
         + [Install]
         + WantedBy=multi-user.target
