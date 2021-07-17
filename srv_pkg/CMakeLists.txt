@@ -38,3 +38,13 @@ add_dependencies(service_server srv_pkg_gencpp)
 add_executable(service_client src/service_client.cpp)
 target_link_libraries(service_client ${catkin_LIBRARIES})
 add_dependencies(service_client srv_pkg_gencpp)
+
+
+## Mark executable scripts (Python etc.) for installation
+catkin_install_python(PROGRAMS scripts/service_server.py scripts/service_client.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+## Mark executables for installation
+install(TARGETS service_server service_client
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
