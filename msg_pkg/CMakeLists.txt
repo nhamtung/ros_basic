@@ -25,3 +25,12 @@ include_directories(${catkin_INCLUDE_DIRS})
 add_executable(pub_test src/pub_test.cpp)
 target_link_libraries(pub_test ${catkin_LIBRARIES})
 add_dependencies(pub_test msg_pkg_gencpp)
+
+## Mark executable scripts (Python etc.) for installation
+catkin_install_python(PROGRAMS scripts/pub_test.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+## Mark executables for installation
+install(TARGETS pub_test
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
