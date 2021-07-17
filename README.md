@@ -15,7 +15,18 @@
 
 # Autostart
 - Permit bash file:
-    + Direct to bash folder: $cd /home/nhamtung/TungNV/ros_basic_ws/src/ros_basic/
+    + Direct to bash folder: $cd /home/nhamtung/TungNV/ros_basic_ws/
+    + Create and edit bash file: $sudo nano autostart.sh
+    + Add to bash file:
+        + #!/bin/bash
+        + echo Add by TungNV
+        + echo cd /home/nhamtung/TungNV/ros_basic_ws/
+        + cd /home/nhamtung/TungNV/ros_basic_ws/
+        + echo source devel/setup.bash
+        + source devel/setup.bash
+        + echo roslaunch topic_pkg topic_cpp.launch
+        + roslaunch topic_pkg topic_cpp.launch
+        + exit 0
     + Permit bash file: $sudo chmod +x autostart.sh
 - Create service:
     + Direct to system folder: $cd /etc/systemd/system/
@@ -29,8 +40,8 @@
         + Type=simple
         + Restart=always
         + RestartSec=1
-        + ExecStart=/home/nhamtung/TungNV/ros_basic_ws/src/ros_basic/autostart.sh
-        + RemainAfterExit=yes
+        + ExecStart=/home/nhamtung/TungNV/ros_basic_ws/install/share/startup/autostart.sh
+        + RemainAfterExit=no
         + [Install]
         + WantedBy=multi-user.target
 - Enable service: $sudo systemctl enable autostart.service
