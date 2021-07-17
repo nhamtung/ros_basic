@@ -19,10 +19,17 @@
 - Run: $roslaunch param_pkg param_runtime.launch
 - Open new sheet and run: $rosrun rqt_reconfigure rqt_reconfigure
 - Publish to topic /control_dynparam:
-    + setDynparam:          0
-    + loadDynparamDefault:  1
-    + loadDynparamRuntime:  2
-    + saveDynparamRuntime:  3
+    + setDynparam:          data = 0
+    + loadDynparamDefault:  data = 1
+    + loadDynparamRuntime:  data = 2
+    + saveDynparamRuntime:  data = 3
 
-- Save parameter  to  .yaml file: $rosrun dynamic_reconfigure dynparam dump /param_runtime ./src/ros_basic/param_pkg/param/param_runtime.yaml
-- Load parameter from .yaml file: $rosrun dynamic_reconfigure dynparam load /param_runtime ./src/ros_basic/param_pkg/param/param_runtime.yaml
+- Save parameter  to  .yaml file: $rosrun dynamic_reconfigure dynparam dump /param_runtime /home/nhamtung/TungNV/ros_basic_ws/install/share/param_pkg/cfg/param_runtime.yaml
+- Load parameter from .yaml file: $rosrun dynamic_reconfigure dynparam load /param_runtime /home/nhamtung/TungNV/ros_basic_ws/install/share/param_pkg/cfg/param_runtime.yaml
+
+# Install package
+- Directory to workspace
+- Build install: $catkin_make install
+- Source: $source install/setup.bash
+- Delete the src folder (delete source code)
+- Run

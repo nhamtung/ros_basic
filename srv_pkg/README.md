@@ -23,3 +23,9 @@
     + Python: $rosrun srv_pkg service_client.py
     + cpp: $rosrun srv_pkg service_client
     
+# Install package
+- Directory to workspace
+- Build install: $catkin_make install
+- Source: $source install/setup.bash
+- Delete the src folder (delete source code)
+- Run

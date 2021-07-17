@@ -47,3 +47,10 @@
 - Run action Client: 
     + Callback: $rosrun actionlib_pkg fibonacciCallbackClient
     + Class: $rosrun actionlib_pkg fibonacciClassClient
+
+# Install package
+- Directory to workspace
+- Build install: $catkin_make install
+- Source: $source install/setup.bash
+- Delete the src folder (delete source code)
+- Run

@@ -24,6 +24,13 @@
     + cpp: $rosrun topic_pkg listener
 
 --------------------------------------------------------------------------------------
+# Install package
+- Directory to workspace
+- Build install: $catkin_make install
+- Source: $source install/setup.bash
+- Delete the src folder (delete source code)
+- Run
+
 # Export data to cvs file
 - Install pandas: $sudo pip install pandas
 - Directory to workspace
