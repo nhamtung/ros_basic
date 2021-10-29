@@ -35,6 +35,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "main_lib");
   ROS_INFO("main.cpp");
 
+  ros::NodeHandle nh("");
 
   func();
   math();
@@ -54,7 +55,7 @@ int main(int argc, char **argv)
     break;
   }
   
-  mylib_ = new MyLib_ns::MyLib("nhamtung");
+  mylib_ = new MyLib_ns::MyLib(&nh, "nhamtung");
   mylib_->sayHello();
   
   ros::spin();

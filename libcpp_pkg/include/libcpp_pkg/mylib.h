@@ -5,6 +5,8 @@
 #include <ros/ros.h>
 #include <unistd.h>
 #include <stdint.h>
+#include "std_msgs/String.h"
+#include "geometry_msgs/Twist.h"
 
 using namespace std;
 
@@ -24,13 +26,13 @@ namespace MyLib_ns{
     {
         private:
             std::string host_;
+            ros::Publisher cmd_vel_pub;
+            void chatterCallback(const std_msgs::String::ConstPtr& msg);
         public:
-            MyLib(std::string host);
+            MyLib(ros::NodeHandle* nh, std::string host);
             ~MyLib();
             std::string d;
             void sayHello();
     };
 }
-
-
 #endif

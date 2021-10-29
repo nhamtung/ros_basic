@@ -24,7 +24,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   
   std::string host_name = "NhamTung";
-  mylib_ = new MyLib_ns::MyLib(host_name);
+  mylib_ = new MyLib_ns::MyLib(&n, host_name);
   mylib_->sayHello();
 
   testLib(0);
