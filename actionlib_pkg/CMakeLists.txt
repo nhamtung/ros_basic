@@ -57,6 +57,10 @@ add_executable(fibonacciClassClient src/fibonacciClassClient.cpp)
 target_link_libraries(fibonacciClassClient ${catkin_LIBRARIES})
 add_dependencies(fibonacciClassClient ${actionlib_pkg_EXPORTED_TARGETS})
 
+#############
+## Install ##
+#############
+
 ## Mark executable scripts (Python etc.) for installation
 catkin_install_python(PROGRAMS 
   scripts/doDishesActionClient.py 
@@ -96,8 +100,7 @@ install(TARGETS
 #   PATTERN ".svn" EXCLUDE
 # )
 ## Mark other files for installation (e.g. launch and bag files, etc.)
-# install(FILES
-#   # myfile1
-#   # myfile2
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
+install(DIRECTORY action/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+  PATTERN ".svn" EXCLUDE
+)
