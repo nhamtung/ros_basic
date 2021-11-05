@@ -33,7 +33,9 @@ add_executable(control_dynparam src/control_dynparam.cpp)
 add_dependencies(control_dynparam ${PROJECT_NAME}_gencfg)
 target_link_libraries(control_dynparam ${catkin_LIBRARIES})
 
-
+#############
+## Install ##
+#############
 
 ## Mark executable scripts (Python etc.) for installation
 catkin_install_python(PROGRAMS scripts/test_param.py
