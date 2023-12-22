@@ -62,7 +62,7 @@ void diagnosticThread(ros::NodeHandle n){
           if(count > 10*frequence){
             diagnostic_define.runtime_name = "Break";
             diagnostic_define.runtime_status = ActionStatus::SUCCEEDED;
-            diagnostic_define.runtime_msg = "Break and close node";
+            diagnostic_define.runtime_msg = "Break and close loop";
             pubDiagnostic();
             break;
           }
