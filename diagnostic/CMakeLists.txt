@@ -16,9 +16,13 @@ catkin_package(
 )
 
 include_directories(
-  #include
+  # include
   ${catkin_INCLUDE_DIRS}
 )
+
+add_executable(diagnostic src/diagnostic.cpp)
+target_link_libraries(diagnostic ${catkin_LIBRARIES})
+add_dependencies(diagnostic ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 #############
 ## Install ##

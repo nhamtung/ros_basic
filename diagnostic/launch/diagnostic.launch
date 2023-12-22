@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Arguments -->
+    <arg name="output"            default="screen"/>
+    <arg name="robot_name"        default="$(optenv ROBOT_NAME)"/>
+    <arg name="robot_param"       default="$(find agv_define)/param/$(arg robot_name)/robot_param/robot.yaml"/> 
+    <arg name="frequence"         default="10"/>   <!-- Hz -->
+
+    <node pkg="diagnostic" type="diagnostic" name="diagnostic" output="$(arg output)" respawn="false"> 
+        <param name="frequence" 	          value="$(arg frequence)" />
+    </node>
+
+</launch>
