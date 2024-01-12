@@ -6,10 +6,10 @@
 
 boost::thread* diagnostic_thread;
 ros::Publisher diagnostic_pub;
+DiagnosticStruct diagnostic_define;
 diagnostic_msgs::DiagnosticArray prev_diagnostic;
 
 double frequence = 5.0;			// Hz
-DiagnosticStruct diagnostic_define;
 
 void pubDiagnostic() {
     diagnostic_msgs::DiagnosticArray diagnostic;
