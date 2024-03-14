@@ -1,72 +1,65 @@
 #include "ros/ros.h"
 #include <boost/thread.hpp>
-
-#include "agv_define/define.h"
+#include <agv_define/define.h>
 #include <diagnostic_msgs/DiagnosticArray.h>
-
-boost::thread* diagnostic_thread;
-ros::Publisher diagnostic_pub;
-DiagnosticStruct diagnostic_define;
-diagnostic_msgs::DiagnosticArray prev_diagnostic;
 
 double frequence = 5.0;			// Hz
 
+boost::thread* loop_thread;
+ros::Publisher diagnostic_pub;
+diagnostic_msgs::DiagnosticArray prev_diagnostic;
+
+// Mandatory
+diagnostic_msgs::DiagnosticStatus init_node;
+// Mandatory if node connect to other devices
+diagnostic_msgs::DiagnosticStatus connection;
+// Optional
+diagnostic_msgs::DiagnosticStatus other_status;
+
 void pubDiagnostic() {
     diagnostic_msgs::DiagnosticArray diagnostic;
-    diagnostic_msgs::DiagnosticStatus node_status;
+    
+    diagnostic.status.push_back(init_node);
+    diagnostic.status.push_back(connection);
+    diagnostic.status.push_back(other_status);
 
-    diagnostic_msgs::KeyValue connection;
-    diagnostic_msgs::KeyValue runtime_name;
-    diagnostic_msgs::KeyValue runtime_status;
-    diagnostic_msgs::KeyValue runtime_msg;
+    if(diagnostic.status != prev_diagnostic.status) {
+      diagnostic.header.seq = prev_diagnostic.header.seq+1;
+      diagnostic.header.stamp = ros::Time::now();
+      diagnostic.header.frame_id = "frame_id";
 
-    diagnostic.header.stamp = ros::Time::now();
-    diagnostic.header.frame_id = diagnostic_define.frame_id;
-    node_status.level = diagnostic_define.operator_level;
-    node_status.name = diagnostic_define.node_name;
-    node_status.message = diagnostic_define.node_message;
-    node_status.hardware_id = diagnostic_define.hardware_id;
-
-    connection.key = "connection";
-    connection.value = diagnostic_define.connection;
-    node_status.values.push_back(connection);
-
-    runtime_name.key = "runtime name";
-    runtime_name.value = diagnostic_define.runtime_name;
-    node_status.values.push_back(runtime_name);
-    runtime_status.key = "runtime status";
-    runtime_status.value = to_string(diagnostic_define.runtime_status);
-    node_status.values.push_back(runtime_status);
-    runtime_msg.key = "runtime ressage";
-    runtime_msg.value = diagnostic_define.runtime_msg;
-    node_status.values.push_back(runtime_msg);
-
-    diagnostic.status.push_back(node_status);
-    if(diagnostic.status != prev_diagnostic.status) diagnostic_pub.publish(diagnostic);
-    prev_diagnostic = diagnostic;
+      diagnostic_pub.publish(diagnostic);
+      prev_diagnostic = diagnostic;
+    }
 }
-void diagnosticThread(ros::NodeHandle n){
+void loopThread(ros::NodeHandle n){
     ros::Rate r((int)frequence);
     int count = 0;
     while (ros::ok()){
         ros::spinOnce();               // check for incoming messages
-        if(diagnostic_define.operator_level == OPERATOR_OK){
-          count++;
-          ROS_INFO("count = %d", count);
-          if(count % (int)frequence == 0){
-            diagnostic_define.runtime_name = "Count";
-            diagnostic_define.runtime_status = ActionStatus::SUCCEEDED;
-            diagnostic_define.runtime_msg = to_string(count);
-            pubDiagnostic();
+
+        if(connection.level == OPERATOR_OK){
+          // getVoltate();
+          if(count%10 == 0){
+            other_status.level = OPERATOR_ERROR;
+            other_status.message = "Can not get Voltate of Battery";
           }
-          if(count > 10*frequence){
-            diagnostic_define.runtime_name = "Break";
-            diagnostic_define.runtime_status = ActionStatus::SUCCEEDED;
-            diagnostic_define.runtime_msg = "Break and close loop";
-            pubDiagnostic();
-            break;
+          if(count%20 == 0){
+            other_status.level = OPERATOR_WARN;
+            other_status.message = "Battery low";
+            diagnostic_msgs::KeyValue voltate;
+            voltate.key = "voltate";
+            voltate.value = to_string(count);
+            other_status.values.clear();
+            other_status.values.push_back(voltate);
           }
         }
+        if(count >= 300){
+          connection.level = OPERATOR_ERROR;
+          connection.message = "Disconnection with Battery";
+        }
+        pubDiagnostic();
+        count++;
         r.sleep();
     }
 }
@@ -77,48 +70,48 @@ void loadParam(ros::NodeHandle n, std::string node_name){
 }
 int main(int argc, char **argv)
 {	
-    ros::init(argc, argv, "diagnostic");
+    ros::init(argc, argv, "diagnostic_example");
     ros::NodeHandle n;
 
     std::string node_name = ros::this_node::getName();
     ROS_INFO("node_name: %s", node_name.c_str());
     loadParam(n, node_name);
 
-  	diagnostic_pub = n.advertise<diagnostic_msgs::DiagnosticArray>("/diagnostic_test", 10);
-  	diagnostic_thread = new boost::thread (&diagnosticThread, n);
+  	diagnostic_pub = n.advertise<diagnostic_msgs::DiagnosticArray>("/diagnostic", 10);
+  	loop_thread = new boost::thread (&loopThread, n);
 
-    diagnostic_define.frame_id = "None";
-    diagnostic_define.operator_level = OPERATOR_ERROR;
-    diagnostic_define.node_name = "node_name";
-    diagnostic_define.node_message = "Starting node";
-    diagnostic_define.hardware_id = "hardware test";
-    diagnostic_define.connection = "Disconnected";
-    diagnostic_define.runtime_status = ActionStatus::PENDING;
-    diagnostic_define.runtime_msg = "";
+    ros::Duration(1).sleep();
+    // Example Init node
+    init_node.name = "init_node";
+    init_node.hardware_id = "None";
+    init_node.level = OPERATOR_STABLE;
+    init_node.message = "Start Node";
+    // Example connection with Battery
+    connection.name = "connection";
+    connection.hardware_id = "Battery";
+    connection.level = OPERATOR_STABLE;
+    connection.message = "Start Node";
+    // Example other status
+    other_status.name = "get_voltate";
+    other_status.hardware_id = "Battery";
+    other_status.level = OPERATOR_STABLE;
+    other_status.message = "Start Node";
     pubDiagnostic();
-    ROS_INFO("Starting node");
 	
+    // Connect to Battery
     ros::Duration(2).sleep();
-
-    diagnostic_define.operator_level = OPERATOR_WARN;
-    diagnostic_define.node_message = "Node started";
-    diagnostic_define.connection = "Connected";
-    diagnostic_define.runtime_name = "Waiting";
-    diagnostic_define.runtime_status = ActionStatus::ACTIVE;
-    diagnostic_define.runtime_msg = "Waiting for 5s";
+    connection.level = OPERATOR_OK;
+    connection.message = "Connected to Battery";
     pubDiagnostic();
-    ROS_INFO("Node started");
 
-    ros::Duration(5).sleep();
-
-    diagnostic_define.operator_level = OPERATOR_OK;
-    diagnostic_define.node_message = "Node started";
-    diagnostic_define.connection = "Connected";
-    diagnostic_define.runtime_name = "Waiting";
-    diagnostic_define.runtime_status = ActionStatus::SUCCEEDED;
-    diagnostic_define.runtime_msg = "Done";
+    if(connection.level == OPERATOR_OK){
+      init_node.level = OPERATOR_OK;
+      init_node.message = "Started Node";
+    }else{
+      init_node.level = OPERATOR_ERROR;
+      init_node.message = "Cannot connect to device";
+    }
     pubDiagnostic();
-    ROS_INFO("Connected");
 
     ros::spin();
 	  return 0;

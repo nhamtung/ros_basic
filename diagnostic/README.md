@@ -1,7 +1,16 @@
 
+# Require
+- Ubuntu 20.04
+- ROS Noetic
+
 # Publisher
-- /diagnostic_test (diagnostic_msgs/DiagnosticArray): Diagnostic for node
+- /diagnostic (diagnostic_msgs/DiagnosticArray): Diagnostic for node
+
+# Build
+- Direct to workspace
+- Catkin: $catkin_make install
+- Source: $source install/setup.bash
 
 # Test
 - Run: $roslaunch diagnostic diagnostic.launch
-- Check: $rostopic echo /diagnostic_test
+- Check: $rostopic echo /diagnostic
