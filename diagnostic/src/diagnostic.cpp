@@ -80,7 +80,7 @@ int main(int argc, char **argv)
   	diagnostic_pub = n.advertise<diagnostic_msgs::DiagnosticArray>("/diagnostic", 10);
   	loop_thread = new boost::thread (&loopThread, n);
 
-    ros::Duration(1).sleep();
+    ros::Duration(0.5).sleep();
     // Example Init node
     init_node.name = "init_node";
     init_node.hardware_id = "None";
