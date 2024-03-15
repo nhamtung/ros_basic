@@ -77,7 +77,7 @@ int main(int argc, char **argv)
     ROS_INFO("node_name: %s", node_name.c_str());
     loadParam(n, node_name);
 
-  	diagnostic_pub = n.advertise<diagnostic_msgs::DiagnosticArray>("/diagnostic", 10);
+  	diagnostic_pub = n.advertise<diagnostic_msgs::DiagnosticArray>("/diagnostic", 10);  // Note: Change the name of topic
   	loop_thread = new boost::thread (&loopThread, n);
 
     ros::Duration(0.5).sleep();
